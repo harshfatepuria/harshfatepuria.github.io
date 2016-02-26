@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Heat Map for FHT</title>
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+
+</style>
+<script type="text/javascript" src="d3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="jquery.js"></script>
+
+</head>
+<body>
+<div style="font: 20px sans-serif;">
+<h3>File types chosen:</h3>
+<ol>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_octet-stream">application/octet-stream</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_zip">application/zip</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_x-executable">application/x-executable</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_pdf">application/pdf</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_xhtml+xml">application/xhtml+xml</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_x-sh">application/x-sh</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=application_xml">application/xml</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=image_jpeg">image/jpeg</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=image_png">image/png</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=audio_mpeg">audio/mpeg</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=video_quicktime">video/quicktime</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=text_html">text/html</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=text_plain">text/plain</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=text_x-matlab">text/x-matlab</a></li>
+<li><a href="D3_FHT_Signature_heatMap.html?type=message_rfc822">message/rfc822</a></li>
+<br><br><a href="D3_FHT_Signature_heatMap.html">CLEAR</a>
+</ol>
+</div>
+<h2 id="name"></h2>
+<div style="position: fixed;"><p id="ff"></p></div><br><br><br><br><br><br>
+<script>
+//var fileName="fht_output/fht_signature_video_quicktime.json";  
+
+
+//application_x-sh, image_png has unique header of 16 bytes
+//message_rfc822 6 bytes unique
+
+var urlpath=document.URL;
+var indexOfEquals=urlpath.indexOf("=");
+var fileName="";
+if (indexOfEquals==-1)
+{
+  fileName="";
+  document.getElementById("name").innerHTML="Please select a file type from the list";
+}
+else
+{
+  fileName="fht_output/fht_signature_"+urlpath.substring(indexOfEquals+1)+".json";  
+  document.getElementById("name").innerHTML="FHT Sparse Matrix Heat Map for file type: "+urlpath.substring(indexOfEquals+1);
+}
+
+
+$.getJSON(fileName, function(json) {
+      var bo=d3.select("body");
+       
+      var j=0;
+
+       $.each(json, function(i,field){
+          i=parseInt(i)+1;
+      var row=bo.append("div")
+      .attr("style","float:left;height:12px;width:2580px;")
+      .text(i)
+      .append("div")
+      .attr("style","float:right;");
+
+
+        row.selectAll()
+        .data(field)
+        .enter()
+        .append("svg")
+        .attr("width","10")
+        .attr("height","10")
+        .append("rect")
+        .attr("width","10")
+        .attr("height","10")
+        .attr("style",function(h,d) { 
+          if(parseFloat(field[d])==0)
+            return "fill:rgb(255,255,255);stroke-width:1;stroke:rgb(230,230,230)";
+          else if(parseFloat(field[d])>=0.8)
+            return "fill:rgb(0,0,102);stroke-width:1;stroke:rgb(0,0,102)";
+            else
+              return "fill:rgb("+(Math.floor((1-parseFloat(field[d]))*255))+","+(150+Math.floor((1-parseFloat(field[d]))*105))+",255);stroke-width:1;stroke:rgb(230,230,230)"; 
+          })
+        .on("mouseover",function(h,d){document.getElementById("ff").innerHTML="Byte Number: "+i+"<br>Byte Value: "+d+"<br>FHT sparse matrix value: "+parseFloat(field[d]);})
+        .on("mouseout", function(){document.getElementById("ff").innerHTML=""});
+     
+        });
+
+});
+
+</script>
+</body>
