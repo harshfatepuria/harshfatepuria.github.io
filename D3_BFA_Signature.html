@@ -78,7 +78,7 @@ $.getJSON(fileName, function(json) {
         v=parseFloat(field);
 
         //COMPANDING
-        //v=Math.log(1+(255*v))/Math.log(256);
+        v=Math.log(1+(255*v))/Math.log(256);
 
         data.push({date: i, close: v});
         //console.log(i+" "+v);

@@ -62,6 +62,9 @@ else
 
 $.getJSON(fileName, function(json) {
       var bo=d3.select("body");
+
+      var colors = ["#ffffff","#eef0f3","#e5ebf0","#d5dce4","#96a9bc","#899eb3","#6c86a1","#426486","#2d5379","#244260","#1b3148"];
+          
        
       var j=0;
 
@@ -73,6 +76,20 @@ $.getJSON(fileName, function(json) {
       .append("div")
       .attr("style","float:right;");
 
+      // row.selectAll()
+      //   .data(field)
+      //   .enter()
+      //   .append("svg")
+      //   .attr("width","10")
+      //   .attr("height","10")
+      //   .append("rect")
+      //   .attr("width","10")
+      //   .attr("height","10")
+      //   .attr("style",function(h,d) { 
+      //         return "fill:"+colors[Math.floor(parseFloat(field[d])*10)]+" ; stroke-width:1;stroke:rgb(230,230,230)"; 
+      //     })
+      //   .on("mouseover",function(h,d){document.getElementById("ff").innerHTML="Byte Number: "+i+"<br>Byte Value: "+d+"<br>FHT sparse matrix value: "+parseFloat(field[d]);})
+      //   .on("mouseout", function(){document.getElementById("ff").innerHTML=""});
 
         row.selectAll()
         .data(field)
@@ -86,7 +103,7 @@ $.getJSON(fileName, function(json) {
         .attr("style",function(h,d) { 
           if(parseFloat(field[d])==0)
             return "fill:rgb(255,255,255);stroke-width:1;stroke:rgb(230,230,230)";
-          else if(parseFloat(field[d])>=0.8)
+          else if(parseFloat(field[d])>=0.9)
             return "fill:rgb(0,0,102);stroke-width:1;stroke:rgb(0,0,102)";
             else
               return "fill:rgb("+(Math.floor((1-parseFloat(field[d]))*255))+","+(150+Math.floor((1-parseFloat(field[d]))*105))+",255);stroke-width:1;stroke:rgb(230,230,230)"; 
