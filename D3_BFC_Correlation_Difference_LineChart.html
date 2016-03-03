@@ -134,7 +134,7 @@ var svg = d3.select("body").append("svg")
   x.domain(d3.extent(data, function(d) { return d.date; }));
 
   //uncomment to get y-axis labels only for y-data available
-  //y.domain(d3.extent(data, function(d) { return d.close; }));
+  y.domain(d3.extent(data, function(d) { return d.close; }));
 
   svg.append("g")
       .attr("class", "x axis")
