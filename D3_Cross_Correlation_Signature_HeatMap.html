@@ -88,9 +88,9 @@ $.getJSON(fileName, function(json) {
         .attr("height","7")
         .attr("style",function(h,d) { 
               if(parseFloat(field[d])==-1)
-                return "fill:rgb(249,249,177);stroke-width:0;stroke:rgb(200,255,0)";
-              else if(Math.floor(parseFloat(field[d])*100)>9)
-                return "fill:"+colors[10]+" ; stroke-width:1;stroke:rgb(230,230,230)"; 
+                return "fill:rgb(249,249,177);stroke-width:0;stroke:rgb(200,255,0);";
+              else if(Math.floor(parseFloat(field[d])*1000)>9)
+                return "fill:"+colors[10]+" ; stroke-width:0;"; 
               else
                 return "fill:"+colors[Math.floor(parseFloat(field[d])*1000)]+" ; stroke-width:1;stroke:rgb(230,230,230)"; 
           })
@@ -113,8 +113,8 @@ $.getJSON(fileName, function(json) {
         //     return "fill:rgb(255,255,255);stroke-width:1;stroke:rgb(230,230,230)";
         //   else if(parseFloat(field[d])>=0.8)
         //     return "fill:rgb(0,0,102);stroke-width:1;stroke:rgb(0,0,102)";
-        //     else
-        //       return "fill:rgb("+(Math.floor((1-parseFloat(field[d]))*255))+","+(150+Math.floor((1-parseFloat(field[d]))*105))+",255);stroke-width:1;stroke:rgb(230,230,230)"; 
+        //   else
+        //     return "fill:rgb("+(Math.floor((1-parseFloat(field[d]))*255))+","+(150+Math.floor((1-parseFloat(field[d]))*105))+",255);stroke-width:1;stroke:rgb(230,230,230)"; 
         //   })
         // .on("mouseover",function(h,d){document.getElementById("ff").innerHTML="Byte Number in Row: "+i+"<br>Byte Number in Column: "+d+"<br>BFC Cross Correlation matrix value: "+parseFloat(field[d]);})
         // .on("mouseout", function(){document.getElementById("ff").innerHTML=""});
