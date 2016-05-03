@@ -1,2 +1,2 @@
 # harshfatepuria.github.io
-My website for demo
+My website for CSCI-599 Project Demonstration
