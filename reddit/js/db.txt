@@ -1,0 +1,60 @@
+create table student
+(
+$name
+			$email
+			$password
+			$dob
+			$phone
+			$alternateemail
+			$gender
+			
+			$fname
+			$mname
+			$pphone
+			$street
+			$city
+			$state
+			
+			$zip
+			
+			
+			$cat
+			$gmat
+			$xat
+$cmat
+$snap
+$xboard
+$xschool
+$xpass
+$xp
+$xiiboard
+$xiischool
+$xiipass
+$xiip
+$gtype
+$field
+$gyear
+$cgpa
+$guniv
+$gcollege
+$i1num
+$i1com
+$i2num
+$i2com
+
+$wnum
+$wcom
+
+$wd
+$idoc
+$idnum
+
+$cobj
+$cpos
+$cevent
+$ceth
+$chob
+$cinfo
+$csch
+
+);
