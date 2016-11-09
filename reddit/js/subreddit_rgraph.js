@@ -79,7 +79,6 @@ $(function() {
                     .text(function(o) { 
                             if (o !== d)
                             {
-                                // document.getElementById('resultsOfHover').innerHTML= document.getElementById('resultsOfHover').innerHTML+"<li>"+o.name+"</li>";
                             }
                             else
                             {
