@@ -1,7 +1,7 @@
 $(function() {
 
     var w = 1600,
-        h = 600,
+        h = 900,
         node,
         link,
         labels,
@@ -79,7 +79,7 @@ $(function() {
                     .text(function(o) { 
                             if (o !== d)
                             {
-                                document.getElementById('resultsOfHover').innerHTML= document.getElementById('resultsOfHover').innerHTML+"<li>"+o.name+"</li>";
+                                // document.getElementById('resultsOfHover').innerHTML= document.getElementById('resultsOfHover').innerHTML+"<li>"+o.name+"</li>";
                             }
                             else
                             {
@@ -95,7 +95,7 @@ $(function() {
                     .text(function(o) { 
                             if (o===d)
                             {
-                                document.getElementById('hoveredSubreddit').innerHTML= "Related subreddits to " + o.name + ":";
+                                // document.getElementById('hoveredSubreddit').innerHTML= "Related subreddits to " + o.name + ":";
                             }
                             else
                             {
