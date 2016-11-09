@@ -79,6 +79,7 @@ $(function() {
                     .text(function(o) { 
                             if (o !== d)
                             {
+                                // document.getElementById('resultsOfHover').innerHTML= document.getElementById('resultsOfHover').innerHTML+"<li>"+o.name+"</li>";
                             }
                             else
                             {
@@ -94,7 +95,7 @@ $(function() {
                     .text(function(o) { 
                             if (o===d)
                             {
-                                // document.getElementById('hoveredSubreddit').innerHTML= "Related subreddits to " + o.name + ":";
+                                document.getElementById('hoveredSubreddit').innerHTML= "Related subreddits to " + o.name;
                             }
                             else
                             {
@@ -109,7 +110,6 @@ $(function() {
         .on('tick', tick)
         .size([w, h])
         .linkDistance(100)
-        .gravity(0.05)
         .charge(charge);
 
     var vis = d3.select('#chart').append('svg:svg')
