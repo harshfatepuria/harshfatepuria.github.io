@@ -109,8 +109,8 @@ $(function() {
     var force = d3.layout.force()
         .on('tick', tick)
         .size([w, h])
-        .linkDistance(100)
-        .charge(charge);
+        .linkDistance(100);
+        
 
     var vis = d3.select('#chart').append('svg:svg')
         .attr('width', w)
